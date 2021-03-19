@@ -1,29 +1,37 @@
 import React from 'react'
-// import Body from 
+import Body from '../Body/Body'
 
-function DataTable( { headings, users, handlesort }) {
+function DataTable( props) {
+   
+
+
     return (
         <div className='dataTable'>
             <table className="table">
                 <thead>
                     <tr>
-                        { headings.map( ( { name, width } ) => {
+                        { props.headings.map((heading)=> {
                             return (
-                                <th className="col" key={name} style={{width}} onClick={ () => {
-                                    handlesort(name.toLowerCase())
-                                }} >
-                                    {name}
+                                <th 
+                                className="col" 
+                                key={heading.name} 
+                                style={{width:heading.width}} 
+                                onClick={ () => {
+                                    props.handleSort(heading.name.toLowerCase())
+                                }} 
+                                >
+                                {heading.name}
                                 </th>
                             )
-                        } ) }
+                        } )}
                     </tr>
                 </thead>
 
-                {/* <Body users={users} /> */}
+            <Body users={props.users} />
 
             </table>
         </div>
     )
 }
 
-export default DataTable
+export default DataTable;
