@@ -2,12 +2,12 @@ import React from 'react'
 import './Navbar.css'
 import Search from '../Search/Search'
 
-function Navbar( handleSearchChange ) {
+function Navbar( props) {
     return (
         <div>
             <nav className="navbar">
                 <div className="navbar-collapse row">
-                    <Search handleSearchChange={handleSearchChange}/>
+                    <Search handleSearchChange={props.handleSearchChange}/>
                 </div>
             </nav>
         </div>
