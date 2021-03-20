@@ -47,4 +47,14 @@ class Table extends React.Component {
         this.setState({ results: sortedEmployees })
     }
 
+    render() {
+        return (
+            <div>
+                <Search handleInputChange={this.handleInputChange}
+                search={this.state.search} />
+                
+            </div>
+        )
+    }
+
 }
