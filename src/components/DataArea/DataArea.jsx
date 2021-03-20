@@ -42,7 +42,7 @@ class DataArea extends Component {
         }
     }
 
-    const compareFnc = (a, b) => {
+    compareFnc = (a, b) => {
         if (state.order === "ascend") {
             if (a[heading] === undefined) {
                 return 1;
@@ -55,7 +55,7 @@ class DataArea extends Component {
             }
         }
     }
-    
+
 
     handleSearchChange = event => {
         const filter = event.target.value;
