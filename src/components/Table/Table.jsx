@@ -47,12 +47,47 @@ class Table extends React.Component {
         this.setState({ results: sortedEmployees })
     }
 
+    sortByLastName = () => {
+        const sortedEmployees = this.state.results.sort((a, b) => {
+            if (b.name.last > a.name.last) {
+                return -1
+            }
+            if (a.name.last > b.name.last) {
+                return 1
+            }
+            return 0
+        })
+        if (this.state.sortOrder === "descend") {
+            sortedEmployees.reverse();
+            this.setState({ sortOrder: "ascend" });
+        } else {
+            this.setState({ sortOrder: "descend" })
+        }
+        this.setState({ results: sortedEmployees})
+    }
+
     render() {
         return (
             <div>
                 <Search handleInputChange={this.handleInputChange}
                 search={this.state.search} />
-                
+
+                <div className="table-responsive">
+                    <table className="table table-striped table-responsive text-center table-hover">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>First Name <span className="downArrow" onClick={this.sortByFirstName}></span></th>
+                                <th>Last Name <span className="downArrow" onClick={this.sortByLastName}></span></th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>DOB</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+
             </div>
         )
     }
