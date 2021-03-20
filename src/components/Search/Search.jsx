@@ -1,7 +1,7 @@
 import React from 'react';
 import './Search.css';
 
-const Search( props ) {
+const Search = ( props ) => {
     return (
         <form>
             <div className="form-group search-widget">
@@ -20,3 +20,5 @@ const Search( props ) {
         </form>
     )
 }
+
+export default Search;
