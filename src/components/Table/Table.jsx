@@ -1,6 +1,6 @@
 import React from 'react';
-import API from '../utils/API.js'
-import Search from '../components/Search/Search';
+import API from '../../utils/API.js'
+import Search from '../Search/Search';
 import './Table.css';
 import DateFormat from 'dateformat';
 
@@ -12,11 +12,13 @@ class Table extends React.Component {
     }
 
     componentDidMount() {
-        API.ApiSearch()
-        .then(res => {
-            this.setState({ results: res.data.results })
-            console.log(this.state.results)
-        }).catch(err => console.log(err))
+        API.getUsers().then(results => {
+            console.log(results.data.results)
+            this.setState({
+                users: results.data.results,
+                filteredUsers: results.data.results
+            })
+        })
     }
 
     handleInputChange = event => {
@@ -29,7 +31,7 @@ class Table extends React.Component {
     }
 
     sortByFirstName = () => {
-        const sortedEmployees = this.state..results.sort((a, b) => {
+        const sortedEmployees = this.state.results.sort((a, b) => {
             if (b.name.last > a.name.last) {
                 return -1
             }
