@@ -1,10 +1,12 @@
-import './App.css';
-import DataArea from './components/DataArea/DataArea'
+import React from 'react';
+import Header from './components/Header/Header';
+import Table from './components/Table/Table';
 
 function App() {
   return (
-    <div className="App">
-      <DataArea/>
+    <div>
+      <Header/>
+      <Table/>
     </div>
   );
 }
