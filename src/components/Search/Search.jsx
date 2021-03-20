@@ -1,17 +1,22 @@
-import React from 'react'
-import './Search.css'
-import DataAreaContext from '../../utils/DataAreaContext'
+import React from 'react';
+import './Search.css';
 
-function Search( props ) {
-  
+const Search( props ) {
     return (
-        <div className='searchbox'>
-            <form className="form-inline">
-                <input type="search" className="form-control" placeholder="Type here" onChange={ e => props.handleSearchChange(e) } />
-                <button className='btn' type='submit'>Search</button>
-            </form>
-        </div>
+        <form>
+            <div className="form-group search-widget">
+                <div className="input-group mb-3">
+                    <input 
+                    onChange={props.handleInputChange}
+                    value={props.search}
+                    name='search'
+                    type='text'
+                    className='form-control'
+                    placeholder='Search directory for Employee'
+                    id='search'
+                    />
+                </div>
+            </div>
+        </form>
     )
 }
-
-export default Search
