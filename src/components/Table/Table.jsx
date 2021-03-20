@@ -28,4 +28,16 @@ class Table extends React.Component {
         }
     }
 
+    sortByFirstName = () => {
+        const sortedEmployees = this.state..results.sort((a, b) => {
+            if (b.name.last > a.name.last) {
+                return -1
+            }
+            if (a.name.last > b.name.last) {
+                return 1
+            }
+            return 0
+        });
+    }
+
 }
