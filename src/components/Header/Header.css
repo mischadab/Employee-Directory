@@ -1,0 +1,12 @@
+.jumbotron {
+    height: 250px;
+    color: rgb(11, 26, 94);
+    background-color: rgb(183, 233, 248);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    margin-bottom: 15px;
+}
