@@ -38,6 +38,13 @@ class Table extends React.Component {
             }
             return 0
         });
+        if (this.state.sortOrder === "descend") {
+            sortedEmployees.reverse()
+            this.setState({ sortOrder: "ascend" })
+        } else {
+            this.setState({ sortOrder: "descend" })
+        }
+        this.setState({ results: sortedEmployees })
     }
 
 }
