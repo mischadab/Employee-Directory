@@ -56,6 +56,8 @@ class DataArea extends Component {
         }
     }
 
+    sortedUsers = this.filteredUsers.sort(compareFnc)
+
 
     handleSearchChange = event => {
         const filter = event.target.value;
