@@ -85,6 +85,7 @@ class Table extends React.Component {
                             </tr>
                         </thead>
 
+                
                         { this.state.results && this.state.results.map(item =>
                             item.name.first.toLowerCase().includes(this.state.search) ?
                             <tbody key={item.login.uuid}>
@@ -97,6 +98,25 @@ class Table extends React.Component {
                                     <td>{DateFormat(item.dob.date, "mediumDate")}</td>
                                 </tr>
                             </tbody>
+                            
+                            :
+
+                            // last name sorting
+                            item.name.last.toLowerCase().include(this.state.search) ?
+                            <tbody key={item.login.uuid}>
+                                <tr>
+                                    <td><img src={item.picture.thumbnail} className="rounded-circle" alt="thumbnail image"/></td>
+                                    <td>{item.name.first}</td>
+                                    <td>{item.name.last}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.email}</td>
+                                    <td>{DateFormat(item.dob.date, "mediumDate")}</td>
+                                </tr>
+                            </tbody>
+
+                            :
+
+                            null
                             )}
 
                     </table>
@@ -107,3 +127,5 @@ class Table extends React.Component {
     }
 
 }
+
+export default Table;
