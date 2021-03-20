@@ -40,8 +40,23 @@ class DataArea extends Component {
                 order: "descend"
             })
         }
-
     }
+
+    const compareFnc = (a, b) => {
+        if (state.order === "ascend") {
+            if (a[heading] === undefined) {
+                return 1;
+            } else if (b[heading] === undefined) {
+                return -1;
+            } else if (heading === "name") {
+                return a[heading].first.localeCompare(b[heading].first);
+            } else {
+                return b[heading] - a[heading]
+            }
+        }
+    }
+    
+
     handleSearchChange = event => {
         const filter = event.target.value;
         const filteredList = this.state.users.filter(item => {
