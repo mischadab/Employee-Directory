@@ -1,0 +1,23 @@
+.table-responsive {
+    height: 350px;
+    width: 100%;
+    overflow: scroll;
+}
+
+thead tr:nth-child(1) th {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.downArrow {
+    width: 0;
+    height: 10;
+    border: 10px 5px 0px 5px;
+    cursor: pointer;
+    position: relative;
+    top: 15px;
+    left: 10px;
+
+}
