@@ -10,47 +10,25 @@ class Table extends React.Component {
         results: [],
         search: ""
     }
-    // state = {
-    //     users: [{}],
-    //     filteredUsers: [{}]
-    // }
-    // headings = [
-    //     { name: "Image", width: "10%" },
-    //     { name: "Name", width: "10%" },
-    //     { name: "Phone", width: "10%" },
-    //     { name: "Email", width: "10%" },
-    //     { name: "DOB", width: "10%" },
-    //     {}
-
-    // ]
 
     componentDidMount() {
         API.getUsers().then(results => {
             console.log(results.data.results)
             this.setState({
                 results: results.data.results,
-                // filteredUsers: results.data.results
+                filteredUsers: results.data.results
             })
             console.log(this.state)
         })
     }
 
-    // handleInputChange = event => {
-    //     if (event.target.name === 'search') {
-    //         const searchTerm = event.target.value.toLowerCase();
-    //         this.setState({
-    //             search: searchTerm
-    //         })
-    //     }
-    // }
-
     handleSearchChange = event => {
-        const filter = event.target.value;
-        const filteredList = this.state.users.filter(item => {
-            let values = item.name.first.toLowerCase();
-            return values.indexOf(filter.toLowerCase()) !== -1;
-        })
-        this.setState({ filteredUsers: filteredList })
+        if (event.target.name === 'search') {
+            const searchTerm = event.target.value.toLowerCase();
+            this.setState({
+                search: searchTerm
+            })
+        }
     }
 
     sortByFirstName = () => {
@@ -93,14 +71,6 @@ class Table extends React.Component {
 
     render() {
         return (
-        //     <div>
-        //     <Search handleSearchChange={this.handleSearchChange} />
-        //     <Search
-        //         headings={this.headings}
-        //         users={this.state.filteredUsers}
-        //         handleSort={this.handleSort}
-        //     />
-        // </div>
 
             <div>
                 <Search handleSearchChange={this.handleSearchChange}
