@@ -10,24 +10,47 @@ class Table extends React.Component {
         results: [],
         search: ""
     }
+    // state = {
+    //     users: [{}],
+    //     filteredUsers: [{}]
+    // }
+    // headings = [
+    //     { name: "Image", width: "10%" },
+    //     { name: "Name", width: "10%" },
+    //     { name: "Phone", width: "10%" },
+    //     { name: "Email", width: "10%" },
+    //     { name: "DOB", width: "10%" },
+    //     {}
+
+    // ]
 
     componentDidMount() {
         API.getUsers().then(results => {
             console.log(results.data.results)
             this.setState({
-                users: results.data.results,
-                filteredUsers: results.data.results
+                results: results.data.results,
+                // filteredUsers: results.data.results
             })
+            console.log(this.state)
         })
     }
 
-    handleInputChange = event => {
-        if (event.target.name === 'search') {
-            const searchTerm = event.target.value.toLowerCase();
-            this.setState({
-                search: searchTerm
-            })
-        }
+    // handleInputChange = event => {
+    //     if (event.target.name === 'search') {
+    //         const searchTerm = event.target.value.toLowerCase();
+    //         this.setState({
+    //             search: searchTerm
+    //         })
+    //     }
+    // }
+
+    handleSearchChange = event => {
+        const filter = event.target.value;
+        const filteredList = this.state.users.filter(item => {
+            let values = item.name.first.toLowerCase();
+            return values.indexOf(filter.toLowerCase()) !== -1;
+        })
+        this.setState({ filteredUsers: filteredList })
     }
 
     sortByFirstName = () => {
@@ -70,8 +93,17 @@ class Table extends React.Component {
 
     render() {
         return (
+        //     <div>
+        //     <Search handleSearchChange={this.handleSearchChange} />
+        //     <Search
+        //         headings={this.headings}
+        //         users={this.state.filteredUsers}
+        //         handleSort={this.handleSort}
+        //     />
+        // </div>
+
             <div>
-                <Search handleInputChange={this.handleInputChange}
+                <Search handleSearchChange={this.handleSearchChange}
                 search={this.state.search} />
 
                 <div className="table-responsive">
@@ -88,7 +120,7 @@ class Table extends React.Component {
                         </thead>
 
                 
-                        { this.state.results && this.state.results.map(item =>
+                      { this.state.results && this.state.results.map(item =>
                             item.name.first.toLowerCase().includes(this.state.search) ?
                             <tbody key={item.login.uuid}>
                                 <tr>
@@ -104,7 +136,7 @@ class Table extends React.Component {
                             :
 
                             // last name sorting
-                            item.name.last.toLowerCase().include(this.state.search) ?
+                            item.name.last.toLowerCase().includes(this.state.search) ?
                             <tbody key={item.login.uuid}>
                                 <tr>
                                     <td><img src={item.picture.thumbnail} className="rounded-circle" alt="thumbnail image"/></td>
@@ -119,7 +151,7 @@ class Table extends React.Component {
                             :
 
                             null
-                            )}
+                      )}
 
                     </table>
                 </div>
