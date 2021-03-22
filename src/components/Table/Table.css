@@ -1,5 +1,5 @@
 .table-responsive {
-    height: 350px;
+    height: 500px;
     width: 100%;
     overflow: scroll;
 }
@@ -17,7 +17,10 @@ thead tr:nth-child(1) th {
     border: 10px 5px 0px 5px;
     cursor: pointer;
     position: relative;
-    top: 15px;
+    top: 16px;
     left: 10px;
-
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-top: 50px;
+    color: rgb(183, 233, 248);
 }
