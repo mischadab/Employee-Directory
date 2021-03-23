@@ -81,8 +81,8 @@ class Table extends React.Component {
                         <thead>
                             <tr>
                                 <th>Image</th>
-                                <th>First Name <span className="downArrow" onClick={this.sortByFirstName}></span></th>
-                                <th>Last Name <span className="downArrow" onClick={this.sortByLastName}></span></th>
+                                <th>First Name <i class="fas fa-sort-down" onClick={this.sortByFirstName}></i></th> 
+                                <th>Last Name <i class="fas fa-sort-down" onClick={this.sortByLastName}></i> </th>
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>DOB</th>
