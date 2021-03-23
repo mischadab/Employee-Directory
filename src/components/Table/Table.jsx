@@ -33,10 +33,10 @@ class Table extends React.Component {
 
     sortByFirstName = () => {
         const sortedEmployees = this.state.results.sort((a, b) => {
-            if (b.name.last > a.name.last) {
+            if (b.name.first > a.name.first) {
                 return -1
             }
-            if (a.name.last > b.name.last) {
+            if (a.name.first > b.name.first) {
                 return 1
             }
             return 0
